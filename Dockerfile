@@ -14,8 +14,12 @@ RUN apt-get update && apt-get install -y \
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
-# Install Python dependencies
-# Set timeout to prevent large models like torch from failing
+# CRITICAL FIX for Render Free Tier (512MB RAM):
+# Prevent pip from attempting to download the 2.5GB CUDA version of PyTorch
+RUN pip install --no-cache-dir torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+# Install remaining Python dependencies
+# Set timeout to prevent large models from failing
 RUN pip install --no-cache-dir --default-timeout=100 -r requirements.txt
 
 # Copy project files
