@@ -10,5 +10,7 @@ services:
         sync: false # You must set this manually in the Render Dashboard -> Environment Variables
       - key: USE_MOCK_DB
         value: "False"
+      - key: ENABLE_WHISPER
+        value: "False" # Bypasses the 512MB RAM cap on Free Tier
       - key: PORT
         value: "8080"
