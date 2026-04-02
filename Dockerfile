@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 # Copy requirements first to leverage Docker cache
 COPY requirements.txt .
 
-# CRITICAL FIX for Render Free Tier (512MB RAM):
+# OPTIMIZATION:
 # Prevent pip from attempting to download the 2.5GB CUDA version of PyTorch
 RUN pip install --no-cache-dir torch torchaudio --index-url https://download.pytorch.org/whl/cpu
 

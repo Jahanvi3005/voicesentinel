@@ -78,7 +78,7 @@ graph TD
         │
         ├──► IF Risk > 85% ────────► Trigger [📱 Device Haptics & Red Alert]
         │
-        ├──► Compile Heatmaps ──────► Render [📊 Glassmorphism Dashboard]
+        ├──► Compile Heatmaps ──────► Output [📊 Glassmorphism Dashboard]
         │
         └──► Export Audio Blob ─────► Provide [💾 Local Wav Download]
         │
@@ -101,34 +101,32 @@ graph TD
 
 ## 🚀 Deployment Operations
 
-VoiceSentinel is heavily configured for professional cloud environments to ensure mobile hardware APIs (which require secure HTTPS contexts) function perfectly.
+VoiceSentinel is configured for professional cloud environments to ensure mobile hardware APIs (which require secure HTTPS contexts) function perfectly.
 
-### Method 1: Render Cloud Deployment (Recommended)
-Because of the heavy ML dependencies (`torch`), native PaaS environments require specific configurations.
-1. Connect this repository to your **Render** dashboard.
-2. VoiceSentinel includes a built-in `render.yaml` infrastructure-as-code blueprint and a `Dockerfile`.
-3. Select the **Standard (2GB RAM)** tier.
-4. Add your `MONGO_URI` to the deployment Environment Variables.
+### Method 1: Hugging Face Spaces (Recommended)
+Hugging Face Spaces provide a generous **16GB RAM** free tier, ideal for running our PyTorch forensic models.
+
+1.  **Create a Space**: Go to [Hugging Face Spaces](https://huggingface.co/new-space).
+2.  **Configuration**: Select **Docker** as the Space SDK.
+3.  **Deployment**: Connect your GitHub repository (`Jahanvi3005/voicesentinel`).
+4.  **Environment Variables**: In the Space Settings, add your `MONGO_URI` connection string.
+5.  **Build**: Hugging Face will automatically detect the `Dockerfile` and metadata in this README and start the build.
 
 ### Method 2: Local Development
-Ensure your machine is running MacOS or a Debian-based Linux environment, and that you have `ffmpeg` installed via brew or apt.
+Ensure your machine has `ffmpeg` installed.
 
-1. **Install Virtual Python Environment**:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   ```
-2. **Database Connection**:
-   Create a `.env` file in the root directory and add:
-   ```env
-   MONGO_URI=mongodb+srv://admin:pass@cluster0...
-   ```
-3. **Boot the Forensic Engine**:
-   ```bash
-   python main.py
-   ```
-4. Access the dashboard securely at `http://localhost:8080/`.
+1.  **Install Dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+2.  **Database Connection**:
+    Add `MONGO_URI` to your `.env` file.
+3.  **Boot the Forensic Engine**:
+    ```bash
+    python main.py
+    ```
+4.  Access the dashboard at `http://localhost:7860/`.
 
 ---
 
+*Engineered with 🛡️ by AntiGravity Engine Developers.*
