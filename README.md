@@ -1,3 +1,12 @@
+---
+title: VoiceSentinel
+emoji: 🛡️
+colorFrom: blue
+colorTo: red
+sdk: docker
+app_port: 7860
+---
+
 # VoiceSentinel: Multimodal Deepfake Defense Platform 
 
 VoiceSentinel is an enterprise-grade forensic intelligence dashboard engineered to detect, intercept, and record **Voice Spoofing** and **Linguistic Scams** in real-time. Built entirely on a Python FastApi/WebSocket architecture, it fuses deep acoustic anomaly detection with natural language urgency scoring to hunt modern AI voice generators.

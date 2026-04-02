@@ -25,8 +25,8 @@ RUN pip install --no-cache-dir --default-timeout=100 -r requirements.txt
 # Copy project files
 COPY . .
 
-# Expose dynamic port (Render injects $PORT)
-EXPOSE 8080
+# Expose the mandatory Hugging Face port
+EXPOSE 7860
 
-# Command to start the application with uvicorn scaling
-CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}"]
+# Command to start the application with uvicorn scaling on port 7860
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]

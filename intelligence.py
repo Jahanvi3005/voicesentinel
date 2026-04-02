@@ -1,6 +1,7 @@
 import torch
 import torch.nn.functional as F
 from transformers import Wav2Vec2Processor, Wav2Vec2ForSequenceClassification, AutoFeatureExtractor
+import whisper
 import numpy as np
 import shap
 import librosa
@@ -8,15 +9,9 @@ import os
 
 class AntigravityIntelligence:
     def __init__(self):
-        self.enable_whisper = os.environ.get("ENABLE_WHISPER", "True").lower() == "true"
-        print(f"Initializing Intelligence Engine (Whisper Enabled: {self.enable_whisper})...")
-        
-        # Load Whisper only if enabled
-        if self.enable_whisper:
-            import whisper
-            self.whisper_model = whisper.load_model("tiny")
-        else:
-            self.whisper_model = None
+        print("Initializing Intelligence Engine (Whisper + Wav2Vec2)...")
+        # Load Whisper (Tiny for speed)
+        self.whisper_model = whisper.load_model("tiny")
         
         # Load a pre-trained Audio Classifier (Using a community model if possible, otherwise features)
         # For now, we'll use base Wav2Vec2 for feature extraction and a custom head
@@ -29,8 +24,7 @@ class AntigravityIntelligence:
         self.gender_extractor = AutoFeatureExtractor.from_pretrained("prithivMLmods/Common-Voice-Gender-Detection")
         
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-        if self.whisper_model:
-            self.whisper_model.to(self.device)
+        self.whisper_model.to(self.device)
         self.audio_classifier.to(self.device)
         self.gender_model.to(self.device)
         
@@ -39,9 +33,6 @@ class AntigravityIntelligence:
 
     def transcribe(self, audio_data, sr=16000):
         """Transcribe audio chunk to text."""
-        if not self.enable_whisper:
-            return "Transcription Disabled (Cloud Mode)"
-            
         # Whisper expects float32 audio
         result = self.whisper_model.transcribe(audio_data, fp16=False)
         return result['text'].strip()
