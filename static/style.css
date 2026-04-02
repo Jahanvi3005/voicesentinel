@@ -1,4 +1,4 @@
-/* General Body Styles */
+
 body {
     font-family: 'Outfit', sans-serif;
     transition: background-color 0.5s ease;
@@ -9,13 +9,12 @@ body {
     background-color: #000000;
 }
 
-/* Dark Mode Overrides */
 body.dark-mode {
     background-color: #000000;
     color: #f1f5f9;
 }
 
-/* Headings */
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', sans-serif;
     letter-spacing: -0.02em;
@@ -30,7 +29,7 @@ body.dark-mode h6 {
     color: #ffffff;
 }
 
-/* Utility Classes */
+
 .hidden {
     display: none !important;
 }
@@ -39,7 +38,7 @@ body.dark-mode h6 {
 
 #main-navbar a {
     position: relative;
-    padding-bottom: 5px; /* Space for underline */
+    padding-bottom: 5px; 
 }
 
 #main-navbar a::after {
@@ -47,7 +46,7 @@ body.dark-mode h6 {
     position: absolute;
     width: 0;
     height: 2px;
-    background-color: #2467e4; /* Blue for underline */
+    background-color: #2467e4; 
     bottom: 0;
     left: 0;
     transition: width 0.3s ease-in-out;
@@ -61,10 +60,10 @@ body.dark-mode h6 {
 
 
 #navbar-links.active {
-    max-height: 400px; /* Adjust based on content */
+    max-height: 400px; 
 }
 
-/* Hero Section */
+
 .hero-section {
     position: relative;
     overflow: hidden;
@@ -136,7 +135,6 @@ body.dark-mode h6 {
     }
 }
 
-/* (Feature 1: Motion Intelligence) */
 .reveal-up {
     opacity: 0;
     transform: translateY(40px);
@@ -158,14 +156,12 @@ body.dark-mode h6 {
     filter: blur(0);
 }
 
-/* Base Motion Smoothing */
+
 * {
     scroll-behavior: smooth;
 }
 
 
-
-/* Section Fade-in on Scroll */
 .fade-in-section {
     opacity: 0;
     transform: translateY(20px);
@@ -178,33 +174,30 @@ body.dark-mode h6 {
 }
 
 
-/* Message Box (for alerts/notifications) */
+
 #message-box {
-    z-index: 1000; /* Ensure it's on top */
+    z-index: 1000; 
 }
 
-/* Scroll Progress Bar */
+
 #scroll-progress-bar {
     position: fixed;
     top: 0;
     left: 0;
     width: 0%;
     height: 5px;
-    background-color: #2563eb; /* Blue color */
+    background-color: #2563eb; 
     z-index: 999;
     transition: width 0.1s ease-out;
 }
 
-/* Social Icons */
-/* Styles moved to app.html for Tailwind CDN compatibility */
 
-/* Specific social icon colors (optional, for branding) */
 .linkedin-icon:hover { color: #0A66C2; }
 .twitter-icon:hover { color: #1DA1F2; }
-.github-icon:hover { color: #6e5494; } /* GitHub's purple */
+.github-icon:hover { color: #6e5494; } 
 .whatsapp-icon:hover { color: #25D366; }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
     .hero-section h1 {
         font-size: 3rem;
