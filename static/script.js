@@ -1,9 +1,9 @@
-// script.js
+
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM Content Loaded. Initializing app...');
 
-    // Initialize WebSocket for Real-time Streaming
+    
     const socket_url = (window.location.protocol === 'https:' ? 'wss://' : 'ws://') + window.location.host + '/ws/audio';
     const socket = new WebSocket(socket_url);
     console.log('Native WebSocket initialized.');
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoutBtn = document.getElementById('logout-btn');
     const userIdDisplay = document.getElementById('user-id-display');
 
-    // Global variable to track login status
+    
     let isUserLoggedIn = false;
 
-    // Attach listener for the main navbar login button
+    
     if (openLoginModalBtn) {
         openLoginModalBtn.addEventListener('click', () => {
             console.log('Navbar Login Button Clicked.');
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Smooth Scrolling for Navigation Links 
+     
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -44,14 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector(targetId).scrollIntoView({
                 behavior: 'smooth'
             });
-            // Close mobile nav after clicking a link
+            
             if (navbarLinks && navbarLinks.classList.contains('active')) {
-                navbarLinks.classList.remove('active'); // Close mobile nav
+                navbarLinks.classList.remove('active'); 
             }
         });
     });
 
-    //  Scroll Progress Bar 
+    
     const scrollProgressBar = document.getElementById('scroll-progress-bar');
     if (scrollProgressBar) {
         window.addEventListener('scroll', () => {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-    // Apply saved theme preference on load
+    
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-mode');
     } else {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // Message Box Utility 
+    
     function showMessageBox(message, type = 'info', duration = 3000) {
         const messageBox = document.getElementById('message-box');
         if (!messageBox) {
