@@ -4,27 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VoiceSentinel: AI Voice Spoofing Detection</title>
-    <!-- Favicon link added -->
+    
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
-    <!-- Tailwind CSS CDN -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Font Awesome CDN for icons -->
+    
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <!-- Native WebSocket handling replaced Socket.io -->
-    <!-- Chart.js CDN -->
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Custom Styles -->
+    
     <link rel="stylesheet" href="/static/style.css" />
     <style>
-      /* Keyframe animations for dynamic blobs */
-      /* High-Fidelity Nebula Background (Feature 1) */
+      
       @keyframes nebula-pulse {
         0%, 100% { transform: scale(1) translate(0, 0); filter: blur(80px) hue-rotate(0deg); }
         33% { transform: scale(1.1) translate(5%, -5%); filter: blur(100px) hue-rotate(20deg); }
@@ -38,7 +36,7 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
       }
-      /* Tailwind-compatible Styles (Feature 1) */
+      
       .btn-primary {
         display: inline-block;
         padding: 0.75rem 2.5rem;
@@ -75,12 +73,12 @@
       .nebula-two { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, #ef4444, transparent); animation-delay: -5s; }
       .nebula-three { top: 40%; left: 30%; width: 40vw; height: 40vw; background: radial-gradient(circle, #8b5cf6, transparent); animation-delay: -10s; }
 
-      /* Ensure parallax container is relative */
+      
       #home {
         position: relative;
-        overflow: hidden; /* Hide overflow from blob movement */
+        overflow: hidden; 
       }
-      /* Glassmorphism 2.0 (Feature 3) */
+      
       .dashboard-card {
         background: rgba(15, 15, 15, 0.7);
         backdrop-filter: blur(24px);
@@ -103,7 +101,7 @@
         top: 0; left: 0; right: 0; height: 1px;
         background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
       }
-      /* Forensic Scanning Line (Feature 3) */
+      
       @keyframes scanline {
         0% { top: 0; opacity: 0; }
         50% { opacity: 0.5; }
@@ -119,7 +117,7 @@
         z-index: 5;
         display: none;
       }
-      /* Recording Pulsar (Feature 3) */
+      
       @keyframes record-pulse {
         0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
         70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
@@ -128,7 +126,7 @@
       .recording-pulse {
         animation: record-pulse 1.5s infinite;
       }
-      /* Call Defense & Standby (Feature 6 & 7) */
+      
       @keyframes pulse-guardian {
         0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); transform: scale(1); }
         70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); transform: scale(1.05); }
@@ -158,7 +156,7 @@
         transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       }
       
-      /* Mobile Forensic Reflow (Feature: Mobile-First UI) */
+      
       @media (max-width: 768px) {
         #call-defense-dashboard {
             top: 0 !important;
@@ -180,7 +178,7 @@
             padding: 1.5rem !important;
         }
         #call-defense-dashboard .text-sm {
-            font-size: 1.25rem !important; /* Embiggen for distance reading */
+            font-size: 1.25rem !important; 
         }
         #call-defense-dashboard .text-xs {
             font-size: 1rem !important;
@@ -198,18 +196,18 @@
     </style>
   </head>
   <body class="dark-mode">
-    <!-- Premium Nebula Background (Feature 1) -->
+    
     <div class="nebula-orb nebula-one"></div>
     <div class="nebula-orb nebula-two"></div>
     <div class="nebula-orb nebula-three"></div>
 
-    <!-- Login/Registration Modal Placeholder -->
+    
     <div id="login-modal-placeholder"></div>
 
-    <!-- Scroll Progress Bar -->
+    
     <div id="scroll-progress-bar"></div>
 
-    <!-- Top Navbar -->
+    
     <nav
       id="main-navbar"
       class="fixed top-0 left-0 right-0 z-50 bg-black dark:bg-black transition-colors duration-300"
@@ -217,9 +215,9 @@
       <div
         class="container mx-auto px-4 py-4 flex justify-between items-center transition-colors duration-300"
       >
-        <!-- Left side: Logo/Title and Hamburger for Mobile -->
+        
         <div class="flex items-center space-x-4">
-          <!-- Logo/Title (visible on all screens) -->
+          
           <a href="#" class="flex items-center space-x-2">
             <span
               class="text-2xl font-bold text-white transition-colors duration-300"
@@ -242,14 +240,14 @@
           </button>
         </div>
 
-        <!-- Right Section: Theme Toggle, Login/Logout -->
+        
         <div class="flex items-center space-x-4">
-          <!-- Login Button (Visible when logged out) -->
+          
           <button id="open-login-modal-btn" class="px-5 py-2 bg-blue-600 text-white rounded-full text-xs font-bold hover:bg-blue-500 transition-all uppercase tracking-widest">
             Login
           </button>
 
-          <!-- Logged In Info / Logout Button -->
+          
           <div
             id="logged-in-info"
             class="text-gray-300 flex items-center space-x-2 hidden"
@@ -267,13 +265,13 @@
     </nav>
 
     <main class="pt-10">
-      <!-- Hero Section -->
+      
       <section
         id="home"
         class="relative bg-black text-white py-24 md:py-40 text-center overflow-hidden"
       >
         <div class="absolute inset-0 z-0">
-          <!-- Removed opacity-10 here -->
+          
           <div class="shape-blob one"></div>
           <div class="shape-blob two"></div>
           <div class="shape-blob three"></div>
@@ -366,7 +364,7 @@
         </div>
       </section>
 
-      <!-- Voice Analysis Section -->
+      
       <section
         id="voice-analysis"
         class="py-16 md:py-24 bg-black dark:bg-black transition-colors duration-300"
@@ -420,7 +418,7 @@
                 </div>
               </div>
 
-              <!-- Record Audio Card -->
+              
               <div class="flex flex-col items-center p-6 rounded-lg">
                 <i
                   class="fas fa-microphone-alt text-4xl text-red-400 dark:text-red-400 mb-3"
@@ -469,7 +467,7 @@
                     >
                       Play
                     </button>
-                    <!-- NEW DOWNLOAD BUTTON -->
+                    
                     <button
                       id="download-recording-btn"
                       class="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-300 text-sm hidden"
@@ -514,7 +512,7 @@
               <span>Analyze Voice</span>
             </button>
 
-            <!-- Loading Spinner for Analysis -->
+            
             <div
               id="analysis-loading-spinner"
               class="hidden mt-4 flex items-center justify-center"
@@ -526,7 +524,7 @@
             </div>
           </div>
 
-          <!-- Professional Multimodal Dashboard (New) -->
+          
           <div id="analysis-results" class="reveal-up hidden animate-fade-in-up mt-12 mb-20">
             <div class="flex flex-col md:flex-row justify-between items-start mb-10 border-b border-white/5 pb-6">
               <div class="text-left">
@@ -545,9 +543,9 @@
               </button>
             </div>
 
-            <!-- Row 1: Key Performance Indicators -->
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <!-- Security Status Card -->
+              
               <div id="status-card" class="dashboard-card border-l-4">
                 <h4 class="text-xs font-bold text-gray-400 uppercase mb-4">Security Status</h4>
                 <div class="flex items-center space-x-4">
@@ -561,7 +559,7 @@
                 </div>
               </div>
 
-              <!-- Confidence Metric -->
+              
               <div class="dashboard-card">
                  <h4 class="text-xs font-bold text-gray-400 uppercase mb-4">AI Confidence Score</h4>
                  <div class="flex flex-col">
@@ -572,7 +570,7 @@
                  </div>
               </div>
 
-              <!-- Persona Identification -->
+              
               <div class="dashboard-card">
                 <h4 class="text-xs font-bold text-gray-400 uppercase mb-4">Identity Fingerprint</h4>
                 <div id="persona-badge-container" class="flex items-center space-x-3">
@@ -584,9 +582,9 @@
               </div>
             </div>
 
-            <!-- Row 2: Analysis Detail Grid -->
+            
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-               <!-- Multimodal Transcription Card -->
+               
                <div class="dashboard-card h-full">
                   <header class="flex justify-between items-center mb-6">
                     <h4 class="text-xs font-bold text-gray-400 uppercase">Multimodal Insight: Transcription</h4>
@@ -602,20 +600,20 @@
                   <p id="analysis-message" class="text-xs text-blue-500/80 mt-6 font-medium italic"></p>
                </div>
 
-               <!-- Technical Evidence (SHAP) -->
+               
                <div class="dashboard-card h-full">
                   <header class="flex justify-between items-center mb-6">
                     <h4 class="text-xs font-bold text-gray-400 uppercase">Explainable AI: Technical Evidence</h4>
                     <span class="px-2 py-0.5 bg-yellow-900/30 text-yellow-500 text-[10px] rounded font-mono">SHAP-INTERPRETER</span>
                   </header>
                   <div id="evidence-markers" class="grid grid-cols-2 gap-3">
-                      <!-- Markers injected by JS -->
+                      
                   </div>
                   <p class="text-[10px] text-gray-600 mt-6">Values relative to baseline probability model distributions.</p>
                </div>
             </div>
 
-            <!-- Row 3: Forensic Waveform Heatmap (Feature 3) -->
+            
             <div class="dashboard-card mt-8">
                <header class="flex justify-between items-center mb-8">
                   <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest">Forensic Temporal Signal Analysis</h4>
@@ -635,7 +633,7 @@
                </div>
             </div>
 
-            <!-- Row 4: Probability Distribution -->
+            
             <div class="dashboard-card mt-8">
               <h4 class="text-xs font-bold text-gray-400 uppercase mb-8 text-center">Probability Distribution Spectrum</h4>
               <div class="flex justify-center items-center" style="max-width: 400px; margin: 0 auto">
@@ -818,7 +816,7 @@
         </div>
       </section>
 
-      <!-- FAQ Section -->
+      
       <section
         id="faq"
         class="py-16 md:py-24 bg-black dark:bg-black transition-colors duration-300"
@@ -833,7 +831,7 @@
           </p>
 
           <div class="max-w-3xl mx-auto text-left space-y-4">
-            <!-- FAQ Item 1 -->
+            
             <div
               class="faq-item border-b border-gray-700 dark:border-gray-700 pb-4"
             >
@@ -851,7 +849,7 @@
                 Call Defense is a built-in module that monitors live system audio or your smartphone's microphone. You can run it continuously during a WhatsApp or Zoom call. If a deepfake crosses the 85% risk threshold, it instantly triggers a Red Alert and haptic vibrations.
               </div>
             </div>
-            <!-- FAQ Item 2 -->
+            
             <div
               class="faq-item border-b border-gray-700 dark:border-gray-700 pb-4"
             >
@@ -869,7 +867,7 @@
                 Instead of just listening for robotic tones, VoiceSentinel combines acoustic fingerprinting (identifying AI audio generators via Wav2Vec2) with linguistic profiling (using OpenAI Whisper to transcribe text and detect scam intent like "urgent money transfers"). 
               </div>
             </div>
-            <!-- FAQ Item 3 -->
+            
             <div
               class="faq-item border-b border-gray-700 dark:border-gray-700 pb-4"
             >
@@ -887,7 +885,7 @@
                 Yes! VoiceSentinel automatically uses the Screen Wake Lock API and Navigator Vibration API to keep your phone active while listening. If it detects a ringtone volume spike, your phone will vibrate to alert you to engage the Call Shield.
               </div>
             </div>
-            <!-- FAQ Item 4 -->
+            
             <div
               class="faq-item border-b border-gray-700 dark:border-gray-700 pb-4"
             >
@@ -909,7 +907,7 @@
         </div>
       </section>
 
-      <!-- Important Setup & Instructions Section -->
+      
       <section
         id="imp"
         class="py-16 md:py-24 bg-white dark:bg-[#1a1a1a] transition-colors duration-300"
@@ -925,7 +923,7 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <!-- Desktop Setup -->
+              
               <div class="dashboard-card p-8 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-black/50">
                   <div class="flex items-center space-x-3 mb-6">
                       <i class="fas fa-laptop text-blue-400 text-3xl"></i>
@@ -938,7 +936,7 @@
                   </ul>
               </div>
 
-              <!-- Mobile/Standby Setup -->
+              
               <div class="dashboard-card p-8 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-black/50">
                   <div class="flex items-center space-x-3 mb-6">
                       <i class="fas fa-mobile-alt text-purple-400 text-3xl"></i>
@@ -954,7 +952,7 @@
         </div>
       </section>
 
-      <!-- Contact Section -->
+      
       <section
         id="contact"
         class="py-16 md:py-24 bg-black dark:bg-black transition-colors duration-300 shadow-inner"
@@ -970,7 +968,7 @@
             <div
               class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start"
             >
-              <!-- Contact Info Column -->
+              
               <div class="text-left">
                 <h3 class="text-2xl font-bold text-white mb-4">
                   Connect With Us
@@ -1052,7 +1050,7 @@
       </section>
 
     </main>
-    <!-- Footer -->
+   
     <footer
       class="bg-gray-100 dark:bg-[#1a1a1a] text-gray-600 dark:text-gray-300 py-6 text-center shadow-inner transition-colors duration-300"
     >
@@ -1064,15 +1062,15 @@
       </div>
     </footer>
 
-    <!-- Message Box -->
+    
     <div
       id="message-box"
       class="fixed bottom-4 right-4 text-white px-6 py-3 rounded-lg shadow-lg hidden bg-gray-700 bg-opacity-80 transition-all duration-300"
     >
-      <!-- Message content will be injected here by JavaScript -->
+      
     </div>
 
-    <!-- Call Defense Sidebar (Feature 6) -->
+    
     <div id="call-defense-dashboard" class="animate-fade-in-up">
         <div class="dashboard-card border-blue-500/40">
             <header class="flex justify-between items-center mb-6">
@@ -1141,7 +1139,7 @@
         </div>
     </div>
 
-    <!-- Setup Guide Modal (Feature 6) -->
+    
     <div id="setup-guide-modal" class="fixed inset-0 z-[110] hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
         <div class="dashboard-card max-w-2xl w-full reveal-up">
             <header class="flex justify-between items-center mb-8 border-b border-white/10 pb-6">
