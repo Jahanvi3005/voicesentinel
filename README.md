@@ -4,6 +4,7 @@ emoji: 🛡️
 colorFrom: blue
 colorTo: red
 sdk: docker
+link: https://huggingface.co/spaces/jahanvigupta30051/voicesentinel1
 app_port: 7860
 ---
 
